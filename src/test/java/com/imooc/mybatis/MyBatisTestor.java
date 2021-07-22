@@ -12,7 +12,7 @@ import java.util.List;
 public class MyBatisTestor {
 
     @Test
-    public void testSelectAll() throws Exception {
+    public void testSelectAll() {
         SqlSession session = null;
         try {
             session = MyBatisUtils.openSession();
@@ -32,8 +32,8 @@ public class MyBatisTestor {
         try {
             session = MyBatisUtils.openSession();
             GoodsDAO goodsDAO = session.getMapper(GoodsDAO.class);
-            List list = goodsDAO.selectByPriceRange(100f,500f,20);
-            System.out.println(list.size());
+            List<Goods> goods = goodsDAO.selectByPriceRange(100f, 500f, 20);
+            System.out.println(goods.size());
         } catch (Exception e) {
             throw e;
         } finally {
@@ -46,6 +46,7 @@ public class MyBatisTestor {
      * 新增数据
      * @throws Exception
      */
+    
     @Test
     public void testInsert() throws Exception {
         SqlSession session = null;
@@ -61,8 +62,9 @@ public class MyBatisTestor {
             goods.setCategoryId(43);
             GoodsDAO goodsDAO = session.getMapper(GoodsDAO.class);
             //insert()方法返回值代表本次成功插入的记录总数
-            int num = goodsDAO.insert(goods);
+            int insert = goodsDAO.insert(goods);
             session.commit();//提交事务数据
+            System.out.println(insert);
             System.out.println(goods.getGoodsId());
         }catch (Exception e){
             if(session != null){

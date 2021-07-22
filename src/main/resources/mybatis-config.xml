@@ -19,9 +19,13 @@
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/babytun?useUnicode=true&amp;characterEncoding=UTF-8"/>
                 <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="password" value="12345678"/>
             </dataSource>
         </environment>
     </environments>
+
+    <mappers>
+        <package name="com.imooc.mybatis.dao"/>
+    </mappers>
 
 </configuration>
